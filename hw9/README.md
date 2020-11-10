@@ -1,5 +1,5 @@
 # TODO
 
-[netflix_titles.csv](/netflix-titles)
+[netflix_titles.csv](/hw9/netflix-titles)
 
-[mubi_ratings.csv](/mubi-ratings)
+[mubi_ratings.csv](/hw9/mubi-ratings)
