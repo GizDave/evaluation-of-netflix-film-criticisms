@@ -35,7 +35,7 @@ public class Clean {
         
         Job job = new Job();
         job.setJarByClass(Clean.class);
-        job.setJobName("Max temperature");
+        job.setJobName("Cleaning");
         
         FileInputFormat.addInputPath(job, new Path(args[0]));
         FileOutputFormat.setOutputPath(job, new Path(args[1]));
