@@ -14,43 +14,43 @@ if (len(sys.argv)==3):
     print("table:",table)
     
     #CLEAN
-#    os.system("hdfs dfs -rm -r -f final/"+dataset+"/"+table)
-    print("hdfs dfs -rm -r -f final/"+dataset+"/"+tableDir)
+    os.system("hdfs dfs -rm -r -f final/"+dataset+"/"+tableDir)
+#    print("hdfs dfs -rm -r -f final/"+dataset+"/"+tableDir)
     
     #SETUP
-#    os.system("")
-    print("hdfs dfs -mkdir final/"+dataset+"/"+tableDir)
+    os.system("hdfs dfs -mkdir final/"+dataset+"/"+tableDir")
+#    print("hdfs dfs -mkdir final/"+dataset+"/"+tableDir)
     
     #RUN
     #remove class and jar files
-#    os.system("rm *.class")
-#    os.system("rm *.jar")
-    print("rm *.class")
-    print("rm *.jar")
+    os.system("rm *.class")
+    os.system("rm *.jar")
+#    print("rm *.class")
+#    print("rm *.jar")
     
     #compile
-    #os.system("javac -classpath `yarn classpath` -d . ProfileMapper.java")
-    #os.system("javac -classpath `yarn classpath` -d . ProfileReducer.java")
-    #os.system("javac -classpath `yarn classpath`:. -d . Profile.java")
-    print("javac -classpath `yarn classpath` -d . ProfileMapper.java")
-    print("javac -classpath `yarn classpath` -d . ProfileReducer.java")
-    print("javac -classpath `yarn classpath`:. -d . Profile.java")
+    os.system("javac -classpath `yarn classpath` -d . ProfileMapper.java")
+    os.system("javac -classpath `yarn classpath` -d . ProfileReducer.java")
+    os.system("javac -classpath `yarn classpath`:. -d . Profile.java")
+#    print("javac -classpath `yarn classpath` -d . ProfileMapper.java")
+#    print("javac -classpath `yarn classpath` -d . ProfileReducer.java")
+#    print("javac -classpath `yarn classpath`:. -d . Profile.java")
     
     #create jar file
-#    os.system("jar -cvf Profile.jar *.class")
-    print("jar -cvf Profile.jar *.class")
+    os.system("jar -cvf Profile.jar *.class")
+#    print("jar -cvf Profile.jar *.class")
     
     #run program
-    #os.system('hadoop jar Profile.jar Profile /user/"$USER"/dataset/'+dataset+"/"+table+' /user/"$USER"/final/'+dataset+"/"+tableDir+'/output')
-    print('hadoop jar Profile.jar Profile /user/"$USER"/dataset/'+dataset+"/"+table+' /user/"$USER"/final/'+dataset+"/"+tableDir+'/output')
+    os.system('hadoop jar Profile.jar Profile /user/"$USER"/dataset/'+dataset+"/"+table+' /user/"$USER"/final/'+dataset+"/"+tableDir+'/output')
+#    print('hadoop jar Profile.jar Profile /user/"$USER"/dataset/'+dataset+"/"+table+' /user/"$USER"/final/'+dataset+"/"+tableDir+'/output')
     
     #DUMP
-    #os.system('hdfs dfs -cat /user/"$USER"/final/'+dataset+'/'+tableDir+'/output/part-r-00000')
-    print('hdfs dfs -cat /user/"$USER"/final/'+dataset+'/'+tableDir+'/output/part-r-00000')
+    os.system('hdfs dfs -cat /user/"$USER"/final/'+dataset+'/'+tableDir+'/output/part-r-00000')
+#    print('hdfs dfs -cat /user/"$USER"/final/'+dataset+'/'+tableDir+'/output/part-r-00000')
     
     #GET
-    #os.system('hdfs dfs -get /user/"$USER"/final/'+dataset+'/'+tableDir+'/output/part-r-00000 profiled_'+table[0:-4]+'.txt')
-    print('hdfs dfs -get /user/"$USER"/final/'+dataset+'/'+tableDir+'/output/part-r-00000 profiled_'+table[0:-4]+'.txt')
+    os.system('hdfs dfs -get /user/"$USER"/final/'+dataset+'/'+tableDir+'/output/part-r-00000 profiled_'+table[0:-4]+'.txt')
+#    print('hdfs dfs -get /user/"$USER"/final/'+dataset+'/'+tableDir+'/output/part-r-00000 profiled_'+table[0:-4]+'.txt')
     print('##DONE##')
     
 ##CLEAN
