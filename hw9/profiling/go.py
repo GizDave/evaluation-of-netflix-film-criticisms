@@ -18,7 +18,7 @@ if (len(sys.argv)==3):
 #    print("hdfs dfs -rm -r -f final/"+dataset+"/"+tableDir)
     
     #SETUP
-    os.system("hdfs dfs -mkdir final/"+dataset+"/"+tableDir")
+    os.system("hdfs dfs -mkdir final/"+dataset+"/"+tableDir)
 #    print("hdfs dfs -mkdir final/"+dataset+"/"+tableDir)
     
     #RUN
