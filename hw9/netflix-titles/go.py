@@ -1,5 +1,4 @@
 import os
-import sys
 
 ##CLEAN
 os.system("hdfs dfs -rm -r -f final/netflix-shows/netflix-titles/")

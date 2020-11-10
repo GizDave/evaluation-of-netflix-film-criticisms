@@ -1,22 +1,35 @@
-to run
+this program assumes your csv file is in 
 
-> sh go.sh
+./dataset/{dataset-name}/{csv-file-name}
 
-or
+### TO RUN
 
 <!--TODO-->
 > python go.py dataset table
 
-where dataset: 
-> 1 = netflix-shows
-> 2 = assignment-matrix
-> 3 = mubi
+run options:
 
-and table:
-> integer from 0 -> number of tables in the set
-
-eg. to run with netflix_titles.csv, dataset=1 (netflix-shows/) and table=1 (1st table in dataset netflix_titles.csv)
-> python go.py 1 1
+* netflix-shows
+  - netflix_titles.csv
+    - python go.py netflix-shows netflix_titles.csv
+    
+* assignment-matrix
+  - data.csv
+    - python go.py assignment-matrix data.csv
+    
+  - movie_titles.csv
+    - python go.py assignment-matrix movie_titles.csv
+    
+* mubi
+  - mubi_lists_data.csv
+    - python go.py mubi mubi_lists_data.csv
+    
+  - mubi_movie_data.csv
+    - python go.py mubi mubi_movie_data
+    
+  - mubi_ratings_data.csv
+    - python go.py mubi mubi_ratings_data.csv
+<!--TODO-->
 
 
 

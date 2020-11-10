@@ -4,21 +4,13 @@ import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
 
 public class ProfileReducer extends Reducer<Text, IntWritable, Text, IntWritable> {
-    private IntWritable result = new IntWritable(0);
     
     @Override
     public void reduce(Text key, Iterable<IntWritable> values, Context context) throws IOException, InterruptedException {
-        
-        
-        
-//UNTESTED CODE
-//        int count=0;
-//        for(IntWritable v : values){
-//            count+=1; //add 1 per line found
-//        }
-//        //set result to the count (int => IntWritable)
-//        result.set(count);
-//        //write to output
-//        context.write(key, result);
+        int sum = 0;
+        for(IntWritable v : values){
+            sum+=v.get()
+        }
+        context.write(key,new IntWritable(sum))
     }
 }
