@@ -1,8 +1,11 @@
 import os
 import sys
 
-#clean
+##CLEAN
 os.system("hdfs dfs -rm -r -f final/netflixshows/netflix_titles/")
+##SETUP
+os.system("hdfs dfs -mkdir final/netflixshows/netflix_titles/")
+##RUN
 #remove class and jar files
 os.system("rm *.class")
 os.system("rm *.jar")
@@ -14,7 +17,9 @@ os.system("javac -classpath `yarn classpath`:. -d . CleanNetflixTitles.java")
 os.system("jar -cvf CleanNetflixTitles.jar *.class")
 #run the program
 ##TODO
-os.system('hadoop jar CleanNetflixTitles.jar CleanNetflixTitles /user/"$USER"/dataset/netflixshows/netflix_titles /user/"$USER"/final/netflixshows/netflix_titles/output')
+os.system('hadoop jar CleanNetflixTitles.jar CleanNetflixTitles /user/"$USER"/dataset/netflix-shows/netflix_titles.csv /user/"$USER"/final/netflixshows/netflix_titles/output')
+
+##DUMP
 os.system('hdfs dfs -cat final/netflixshows/netflix_titles/ /output/part-r-00000')
 
 print('##DONE##')
