@@ -14,7 +14,7 @@ public class CleanNetflixTitlesMapper extends Mapper<LongWritable, Text, NullWri
         //12 columns
 //        if(tokens.length==12){
         if(tokens.length==12){
-            if(tokens[0].equals("show_id")){
+            if(!tokens[0].equals("show_id")){
                 //build csv row
                 String retStr="";
                 //remove 1st col
