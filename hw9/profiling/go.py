@@ -7,9 +7,14 @@ table = str(sys.args[1]) #table
 
 if(dataset=="1"): #netflix_titles.csv
     directory = "netflixshows/"
-    if(table="1"):
+    if(table=="1"):
         inputSrc = "netflix_titles.csv"
-        
+elif(dataset=="2"):
+    pass
+    #TODO
+elif(dataset=="3"):
+    pass
+    #TODO
 ##----END TODO--------
 
 #clean
@@ -20,7 +25,7 @@ os.system("rm *.jar")
 #compile
 os.system("javac -classpath `yarn classpath` -d . ProfileMapper.java")
 os.system("javac -classpath `yarn classpath` -d . ProfileReducer.java")
-os.system("javac -classpath `yarn classpath` -d . ProfileReducer.java")
+os.system("javac -classpath `yarn classpath`:. -d . Profile.java")
 #create jar file
 os.system("jar -cvf Profile.jar *.class")
 #run the program

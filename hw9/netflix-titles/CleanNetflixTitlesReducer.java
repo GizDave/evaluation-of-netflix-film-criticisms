@@ -8,5 +8,8 @@ public class CleanNetflixTitlesReducer extends Reducer<Text, IntWritable, Text, 
     @Override
     public void reduce(Text key, Iterable<IntWritable> values, Context context) throws IOException, InterruptedException {
         //TODO
+        /*
+        I DONT THINK A REDUCER IS NECESSARY - raymond
+        */   
     }
 }
