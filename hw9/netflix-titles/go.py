@@ -18,7 +18,3 @@ os.system('hadoop jar CleanNetflixTitles.jar CleanNetflixTitles /user/"$USER"/da
 os.system('hdfs dfs -cat final/netflixshows/netflix_titles/ /output/part-r-00000')
 
 print('##DONE##')
-
-#javac -classpath `yarn classpath` -d . ProfileMapper.java
-#javac -classpath `yarn classpath` -d . ProfileReducer.java
-#javac -classpath `yarn classpath`:. -d . Profile.java

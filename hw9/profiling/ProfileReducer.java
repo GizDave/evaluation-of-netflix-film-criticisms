@@ -8,13 +8,17 @@ public class ProfileReducer extends Reducer<Text, IntWritable, Text, IntWritable
     
     @Override
     public void reduce(Text key, Iterable<IntWritable> values, Context context) throws IOException, InterruptedException {
-        int count=0; //count how many lines have {len} number of words
-        for(IntWritable v : values){
-            count+=1; //add 1 per line found
-        }
-        //set result to the count (int => IntWritable)
-        result.set(count);
-        //write to output
-        context.write(key, result);
+        
+        
+        
+//UNTESTED CODE
+//        int count=0;
+//        for(IntWritable v : values){
+//            count+=1; //add 1 per line found
+//        }
+//        //set result to the count (int => IntWritable)
+//        result.set(count);
+//        //write to output
+//        context.write(key, result);
     }
 }
