@@ -13,17 +13,17 @@ public class CleanNetflixTitlesMapper extends Mapper<LongWritable, Text, NullWri
         String[] tokens= line.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)"); // parse csv
         //12 columns
 //        if(tokens.length==12){
-        if(tokens.length==12 || tokens[0].equals("show_id")){
-            //build csv row
-            String retStr="";
-            //remove 1st col
-            for(int i=1;i<12;i++){
-                retStr+=tokens[i];
-                if(i<11){
-                    retStr+=",";
+        if(tokens.length==12){
+            if(!tokens[0].equals("show_id")){
+                String retStr="";
+                for(int i=0;i<13;i++) {
+                    retStr+=tokens[i];
+                    if(i<12) {
+                        retStr+=",";
+                    }
                 }
+                System.out.println(retStr);
             }
-            context.write(NullWritable.get(),new Text(retStr));
         }
     }
 }
