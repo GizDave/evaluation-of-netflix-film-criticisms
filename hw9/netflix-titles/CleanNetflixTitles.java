@@ -1,5 +1,4 @@
 import org.apache.hadoop.fs.Path;
-//import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.NullWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
@@ -21,11 +20,8 @@ public class CleanNetflixTitles {
         FileOutputFormat.setOutputPath(job, new Path(args[1]));
 
         job.setMapperClass(CleanNetflixTitlesMapper.class);
-//        job.setReducerClass(CleanNetflixTitlesReducer.class);
-//        job.setOutputKeyClass(Text.class);
         job.setOutputKeyClass(NullWritable.class);
         job.setOutputValueClass(Text.class);
-//        job.setOutputValueClass(IntWritable.class);
 
         System.exit(job.waitForCompletion(true) ? 0 : 1);
     }

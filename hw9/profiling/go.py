@@ -36,4 +36,7 @@ if (len(sys.argv)==3):
     os.system('hdfs dfs -get /user/"$USER"/final/'+dataset+'/'+tableDir+'/output/part-r-00000 profiled_'+table[0:-4]+'.txt')
     print('##DONE##')
 else:
-    print("Usage: <directory-name> <csv-file-name>")
+    print("Usage: python go.py <directory-name> <csv-file-name>")
+    print("directory-name options: netflix-shows | assignment-matrix | mubi")
+    print("csv-file-name options: netflix_titles.csv | cleaned_netflix_titles.csv | datasetName.csv")
+    print("example: python go.py netflix-shows netflix_titles.csv")
