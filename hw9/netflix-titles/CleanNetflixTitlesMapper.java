@@ -14,7 +14,8 @@ public class CleanNetflixTitlesMapper extends Mapper<LongWritable, Text, NullWri
         String[] tokens= line.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)"); // parse csv
         //int cols = 12;
         //todo: delete first row? add: (|| tokens[0].equals("show_id"))
-        if(tokens.length==12){
+//        if(tokens.length==12){
+        if(tokens.length==12 || tokens[0].equals("show_id")){
             //build csv row
             String retStr="";
             //remove 1st col
