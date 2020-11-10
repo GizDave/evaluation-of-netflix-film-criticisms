@@ -17,3 +17,7 @@ mubi_lists_data.csv
 mubi_movie_data.csv
 
 [mubi_ratings.csv](/hw9/mubi-ratings)
+
+### profiling datasets
+
+[profile code](/hw9/profiling)
