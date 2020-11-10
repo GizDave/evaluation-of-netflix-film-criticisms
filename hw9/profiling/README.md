@@ -1,3 +1,5 @@
+the program counts the number of rows in a given csv file
+
 this program assumes your csv file is in 
 
 ./dataset/{dataset-name}/{csv-file-name}
@@ -25,7 +27,7 @@ run options:
     > python go.py mubi mubi_lists_data.csv
     
   - mubi_movie_data.csv
-    > python go.py mubi mubi_movie_data
+    > python go.py mubi mubi_movie_data.csv
     
   - mubi_ratings_data.csv
     > python go.py mubi mubi_ratings_data.csv

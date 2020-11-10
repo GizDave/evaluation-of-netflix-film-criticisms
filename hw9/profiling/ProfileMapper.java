@@ -7,7 +7,7 @@ import org.apache.hadoop.mapreduce.Mapper;
 public class ProfileMapper extends Mapper<LongWritable, Text, Text, IntWritable> {
     
     @Override
-    public void reduce(Text key, Iterable<IntWritable> values, Context context) throws IOException, InterruptedException {
+    public void map(LongWritable key, Text value, Context context) throws IOException,InterruptedException {
         context.write(new Text("lines:"), new IntWritable(1));
     }
 }
