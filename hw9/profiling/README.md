@@ -5,7 +5,7 @@ this program assumes your csv file is in
 ### TO RUN
 
 <!--TODO-->
-> python go.py dataset table
+> python go.py {dataset-name} {csv-file-name}
 
 run options:
 

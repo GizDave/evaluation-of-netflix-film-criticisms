@@ -10,8 +10,8 @@ if (len(sys.argv)==3):
     table = str(sys.argv[2])
     tableDir = '-'.join(table.split('_'))[0:-4] #make underscores into hyphens 
     
-    print("dataset:",dataset)
-    print("table:",table)
+#    print("dataset:",dataset)
+#    print("table:",table)
     
     #CLEAN
     os.system("hdfs dfs -rm -r -f final/"+dataset+"/"+tableDir)
