@@ -13,7 +13,6 @@ os.system("rm *.jar")
 os.system("rm *.csv")
 #compile
 os.system("javac -classpath `yarn classpath` -d . CleanNetflixTitlesMapper.java")
-#os.system("javac -classpath `yarn classpath` -d . CleanNetflixTitlesReducer.java") #reducer not necessary
 os.system("javac -classpath `yarn classpath`:. -d . CleanNetflixTitles.java")
 #create jar file
 os.system("jar -cvf CleanNetflixTitles.jar *.class")

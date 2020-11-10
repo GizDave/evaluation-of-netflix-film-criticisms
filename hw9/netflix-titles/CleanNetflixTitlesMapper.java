@@ -9,11 +9,9 @@ public class CleanNetflixTitlesMapper extends Mapper<LongWritable, Text, NullWri
     
     @Override
     public void map(LongWritable key, Text value, Context context) throws IOException,InterruptedException {
-        //TODO
         String line = value.toString();        
         String[] tokens= line.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)"); // parse csv
-        //int cols = 12;
-        //todo: delete first row? add: (|| tokens[0].equals("show_id"))
+        //12 columns
 //        if(tokens.length==12){
         if(tokens.length==12 || tokens[0].equals("show_id")){
             //build csv row
