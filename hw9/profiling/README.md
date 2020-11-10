@@ -2,7 +2,7 @@ the program counts the number of rows in a given csv file
 
 this program assumes your csv file is in 
 
-./dataset/{dataset-name}/{csv-file-name}
+*./dataset/{dataset-name}/{csv-file-name}*
 
 ### TO RUN
 
