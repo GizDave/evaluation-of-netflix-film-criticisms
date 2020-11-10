@@ -16,7 +16,7 @@ public class CleanNetflixTitles {
         Job job = new Job();
         job.setJarByClass(CleanNetflixTitles.class);
         job.setJobName("CleanNetflixTitles");
-//        job.setNumReduceTasks(1);
+        job.setNumReduceTasks(1);
         FileInputFormat.addInputPath(job, new Path(args[0]));
         FileOutputFormat.setOutputPath(job, new Path(args[1]));
 
