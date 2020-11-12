@@ -1,3 +1,5 @@
+# standalone
+
 java -version
 yarn classpath
 
