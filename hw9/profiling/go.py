@@ -43,5 +43,4 @@ if (len(sys.argv)==3):
 else:
     print("Usage: python go.py <directory-name> <csv-file-name>")
     print("directory-name options: netflix-shows | assignment-matrix | mubi")
-    print("csv-file-name options: netflix_titles.csv | cleaned_netflix_titles.csv | datasetName.csv")
     print("example: python go.py netflix-shows netflix_titles.csv")

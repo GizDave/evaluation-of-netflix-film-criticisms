@@ -11,7 +11,6 @@ public class CleanMubiRatingsMapper extends Mapper<LongWritable, Text, NullWrita
         String line = value.toString();        
         String[] tokens= line.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)"); // parse csv
         //13 columns
-//        if(tokens.length==13){
         if(tokens.length==13){
             if(!tokens[0].equals("movie_id")){ //trim header
                 //set flag to check if booleans are proper booleans, ie. True or False entries only

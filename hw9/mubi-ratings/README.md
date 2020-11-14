@@ -1,4 +1,4 @@
-this assumes netflix_titles.csv is in the hdfs path:
+this assumes mubi_ratings.csv is in the hdfs path:
 
 > dataset/mubi/mubi_ratings_data.csv
 
