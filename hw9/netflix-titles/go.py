@@ -7,7 +7,7 @@ os.system("hdfs dfs -rm -r -f final/netflix-shows/netflix-titles/")
 os.system("hdfs dfs -mkdir final/netflix-shows/netflix-titles/")
 
 ##RUN
-#remove class and jar files AND csv files output from previous run
+#remove class and jar files AND csv files output
 os.system("rm *.class")
 os.system("rm *.jar")
 os.system("rm *.csv")
@@ -24,4 +24,9 @@ os.system('hadoop jar CleanNetflixTitles.jar CleanNetflixTitles /user/"$USER"/da
 
 #GET FILE TO HADOOP SERVER
 os.system('hdfs dfs -get /user/"$USER"/final/netflix-shows/netflix-titles/output/part-r-00000 cleaned_netflix_titles.csv')
+
+##delete class and jar files as they are not needed anymore
+os.system("rm *.class")
+os.system("rm *.jar")
+
 print('##DONE##')
