@@ -1,5 +1,9 @@
 # CLEANING AND PROFILING
 
+	note: the submission directory is the final version of the assignment
+
+	all the other directories contain a mapreduce program for a specific dataset
+
 the directories contains a mapreduce program for either cleaning or profiling the dataset
 
 total: 7 mapreduce programs (6 cleaning, 1 profiling)
@@ -10,9 +14,7 @@ total: 7 mapreduce programs (6 cleaning, 1 profiling)
 
 ## assignment-matrix
 
-movie_titles.csv <!--[movie_titles.csv](/hw9/movie-titles)-->
-
-data.csv <!--[data.csv](/hw9/data)-->
+[movie-titles and data](/hw9/assignment-netflix)
 
 ## mubi
 
