@@ -17,7 +17,7 @@ if (len(sys.argv)==3):
     os.system("rm *.class")
     os.system("rm *.jar")
     os.system("rm profiled_"+table[0:-4]+'.txt')
-    
+	
     #compile
     os.system("javac -classpath `yarn classpath` -d . CountRecsMapper.java")
     os.system("javac -classpath `yarn classpath` -d . CountRecsReducer.java")
@@ -34,6 +34,11 @@ if (len(sys.argv)==3):
     
     #GET
     os.system('hdfs dfs -get /user/"$USER"/final/'+dataset+'/'+tableDir+'/output/part-r-00000 profiled_'+table[0:-4]+'.txt')
+    
+    ##delete class and jar files as they are not needed anymore
+    os.system("rm *.class")
+    os.system("rm *.jar")
+    
     print('##DONE##')
 else:
     print("Usage: python go.py <directory-name> <csv-file-name>")
