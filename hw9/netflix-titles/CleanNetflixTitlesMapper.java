@@ -11,7 +11,6 @@ public class CleanNetflixTitlesMapper extends Mapper<LongWritable, Text, NullWri
         String line = value.toString();        
         String[] tokens= line.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)"); // parse csv
         //12 columns
-//        if(tokens.length==12){
         if(tokens.length==12){
             if(!tokens[0].equals("show_id")){
                 //build csv row
