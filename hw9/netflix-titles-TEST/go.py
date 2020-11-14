@@ -16,7 +16,7 @@ os.system("javac -classpath `yarn classpath` -d . CleanMapper.java")
 os.system("javac -classpath `yarn classpath` -d . CleanReducer.java")
 os.system("javac -classpath `yarn classpath`:. -d . Clean.java")
 #create jar file
-os.system("jar -cvf CleanNetflixTitles.jar *.class")
+os.system("jar -cvf Clean.jar *.class")
 #run the program
 os.system('hadoop jar Clean.jar Clean /user/"$USER"/dataset/netflix-shows/netflix_titles.csv /user/"$USER"/final/netflix-shows/netflix-titles/output')
 
