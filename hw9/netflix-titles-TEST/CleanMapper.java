@@ -4,7 +4,7 @@ import org.apache.hadoop.io.NullWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 
-public class CleanNetflixTitlesMapper extends Mapper<LongWritable, Text, NullWritable, Text> {
+public class CleanMapper extends Mapper<LongWritable, Text, NullWritable, Text> {
     
     @Override
     public void map(LongWritable key, Text value, Context context) throws IOException,InterruptedException {

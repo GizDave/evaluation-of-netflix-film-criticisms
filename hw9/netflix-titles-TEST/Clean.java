@@ -5,21 +5,21 @@ import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
-public class CleanNetflixTitles {
+public class Clean {
     public static void main(String[] args) throws Exception {
     if (args.length != 2) {
-        System.err.println("Usage: CleanNetflixTitles <input path> <output path>");
+        System.err.println("Usage: Clean <input path> <output path>");
         System.exit(-1);
     }
 
         Job job = new Job();
-        job.setJarByClass(CleanNetflixTitles.class);
-        job.setJobName("CleanNetflixTitles");
+        job.setJarByClass(Clean.class);
+        job.setJobName("Clean");
         job.setNumReduceTasks(0);
         FileInputFormat.addInputPath(job, new Path(args[0]));
         FileOutputFormat.setOutputPath(job, new Path(args[1]));
 
-        job.setMapperClass(CleanNetflixTitlesMapper.class);
+        job.setMapperClass(CleanMapper.class);
         job.setOutputKeyClass(NullWritable.class);
         job.setOutputValueClass(Text.class);
 
