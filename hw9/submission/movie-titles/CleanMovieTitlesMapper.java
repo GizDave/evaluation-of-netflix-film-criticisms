@@ -4,7 +4,7 @@ import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 
-class CleanDataMapper extends Mapper<LongWritable, Text, Text, Text> {
+class CleanMovieTitlesMapper extends Mapper<LongWritable, Text, Text, Text> {
     private static final int MISSING = 9999;
 
     @Override
