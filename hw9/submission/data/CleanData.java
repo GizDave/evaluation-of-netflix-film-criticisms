@@ -17,13 +17,13 @@ public class CleanData {
         }
 
         Job job = new Job();
-        job.setJarByClass(Clean_data.class);
-        job.setJobName("Clean_data");
+        job.setJarByClass(CleanData.class);
+        job.setJobName("CleanData");
 
         FileInputFormat.addInputPath(job, new Path(args[0]));
         FileOutputFormat.setOutputPath(job, new Path(args[1]));
 
-        job.setMapperClass(CleanMapper.class);
+        job.setMapperClass(CleanDataMapper.class);
         job.setNumReduceTasks(1);
 
         job.setOutputKeyClass(Text.class);
