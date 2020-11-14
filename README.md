@@ -4,4 +4,4 @@
 
 [HW8: data ingestion](/hw8)
 
-[HW9: data cleaning and profiling](hw/9)
+[HW9: data cleaning and profiling](/hw9)
