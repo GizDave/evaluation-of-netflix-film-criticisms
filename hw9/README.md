@@ -18,9 +18,9 @@ total: 7 mapreduce programs (6 cleaning, 1 profiling)
 
 ## mubi
 
-mubi_lists_data.csv <!--[mubi_lists_data.csv](/hw9/mubi-lists)-->
+[mubi_lists_data.csv](/hw9/mubi-lists)
 
-mubi_movie_data.csv <!--[mubi_movie_data.csv](/hw9/mubi-movie)-->
+[mubi_movie_data.csv](/hw9/mubi-movie)
 
 [mubi_ratings_data.csv](/hw9/mubi-ratings)
 
