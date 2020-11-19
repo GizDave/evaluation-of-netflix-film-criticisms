@@ -1,1 +1,1 @@
-//note that reducer is the same as the one in mubi-movies
+//note that reducer is the same as the one in mubi-movie
