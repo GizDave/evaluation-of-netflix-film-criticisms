@@ -1,13 +1,31 @@
+## not functional yet
 import sys
-from pyspark import SparkContext
-from pyspark.sql import SQlContext
+from pyspark import SparkContext, SparkConf
 from csv import reader
 
-if (len(sys.argv)!=2):
-  print('Usage:')
-  sys.exit(1)
+def get_year(line):
+  pass
+  year = line[6]
+  return year
 
-sc = SparkContext()
-lines = sc.textFile(sys.argv[1],1)
+def get_desc(line):
+  pass
+  return line[10]
 
-#todo
+if __name__ == "__main__":
+  
+  sc = SparkContext()
+  line = sc.textFile('dataset/netflix-shows/cleaned_netflix_titles.csv')
+  
+  line = line.map(lambda line : line.lower())
+#  line = line.mapPartitions(lambda x: reader(x))
+  tokens = line.flatMap(lambda l: l.split(',(?=([^\"]*\"[^\"]*\")*[^\"]*$)'))
+  
+  yearDesc = tokens.map(lambda token:())
+  
+  
+  # spark action
+  line.saveAsTextFile('netflix_titles_test.out')
+  
+  sc.stop()
+  
