@@ -6,6 +6,4 @@
 
 [HW9: data cleaning and profiling](/hw9)
 
-[HW11: Analytics Code - Drop 1](/hw11)
-
-[HW12: Final Analytics Project Code]
+[Analytics Code - Drop 1](/analytics)
