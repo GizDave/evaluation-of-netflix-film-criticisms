@@ -1,0 +1,7 @@
+$ impala-shell
+
+impala> connect compute-2-1;
+
+#create table
+create external table mubiratings (movie_id int, rating_id int, rating_url string, rating_score float, rating_timestamp string, critic string, critic_likes string, critic_comments string, user_id string, isTrialist string, isSubscriber string, isEligibleTrial string, hasPayment string) row format delimited fields terminated by ',' location '/user/rs5955/impalaInput';
+
