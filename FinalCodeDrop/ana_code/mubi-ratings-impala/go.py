@@ -1,5 +1,8 @@
 import os
 
+#make directory if it doesnt exist
+os.system('hdfs dfs -mkdir impalaInput')
+
 # clear previous inputs
 os.system('hdfs dfs -rm -r -f impalaInput/mubi-ratings')
 #make impala input directory

@@ -1,15 +1,31 @@
 $ impala-shell
 
-impala> connect compute-2-1;
+> connect compute-2-1;
 
-use {NETID};
+> use {NETID};
 
-#create table
-create external table mubiratings (movie_id int, rating_id int, rating_url string, rating_score float, rating_timestamp string, critic string, critic_likes string, critic_comments string, user_id string, isTrialist boolean, isSubscriber boolean, isEligibleTrial boolean, hasPayment boolean) row format delimited fields terminated by '|' location '/user/rs5955/impalaInput';
+//create table (replace rs5955 with your NETID)
 
-#check table
+create external table mubiratings (movie_id int, rating_id int, rating_url string, rating_score float, rating_timestamp string, critic string, critic_likes int, critic_comments int, user_id int, isTrialist boolean, isSubscriber boolean, isEligibleTrial boolean, hasPayment boolean) row format delimited fields terminated by '|' location '/user/rs5955/impalaInput/mubi-ratings/';
+
+//check table
+
 show tables;
 
 describe mubiratings;
 
+select * from mubiratings limit 5;
 
+movieid int
+ratingid int 
+ratingurl string
+ratingscore float
+ratingtimestamp timestamp
+critic string
+criticlikes int
+criticcomments int 
+userid int
+usertrialist bool
+usersub bool
+usereligiblefortrial bool
+userhaspayment bool

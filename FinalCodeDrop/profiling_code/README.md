@@ -14,31 +14,31 @@ run options:
   - netflix_titles.csv
     > python go.py netflix-shows netflix_titles.csv
 	
-    > python go.py netflix-shows cleaned_netflix_titles.csv (generated)
+    > python go.py netflix-shows cleaned_netflix_titles.csv
 	
 * assignment-matrix
   - data.csv
     > python go.py assignment-matrix data.csv
 	
-	> python go.py assignment-matrix cleaned_data.csv (generated)
+	> python go.py assignment-matrix cleaned_data.csv
     
   - movie_titles.csv
     > python go.py assignment-matrix movie_titles.csv
 	
-	> python go.py assignment-matrix cleaned_movie_titles.csv (generated)
+	> python go.py assignment-matrix cleaned_movie_titles.csv
     
 * mubi
   - mubi_lists_data.csv
     > python go.py mubi mubi_lists_data.csv
 	
-	> python go.py mubi cleaned_mubi_lists_data.csv (generated)
+	> python go.py mubi cleaned_mubi_lists_data.csv
     
   - mubi_movie_data.csv
     > python go.py mubi mubi_movie_data.csv
 	
-	> python go.py mubi cleaned_mubi_movie_data.csv (generated)
+	> python go.py mubi cleaned_mubi_movie_data.csv
     
   - mubi_ratings_data.csv
     > python go.py mubi mubi_ratings_data.csv
 	
-	> python go.py mubi cleaned_mubi_ratings_data.csv (generated)
+	> python go.py mubi cleaned_mubi_ratings_data.csv
