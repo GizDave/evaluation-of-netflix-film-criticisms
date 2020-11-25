@@ -34,11 +34,11 @@ This directory is for ETL/cleaning code
   - go.py
   - README.md
 - /mubi-movie
-  -  CleanMubiListMovieReducer.java
-  -  CleanMubiMovie.java
-  -  CleanMubiMovieMapper.java
-  -  go.py
-  -  README.md
+  - CleanMubiListMovieReducer.java
+  - CleanMubiMovie.java
+  - CleanMubiMovieMapper.java
+  - go.py
+  - README.md
 - /mubi-ratings
   - CleanMubiRatings.java
   - CleanMubiRatingsMapper.java

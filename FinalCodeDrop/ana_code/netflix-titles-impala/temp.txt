@@ -1,0 +1,14 @@
+to set impala directory with proper files run:
+$ python go.py
+
+impala using netflix_titles.csv
+
+$ impala-shell
+
+impala> connect compute-2-1;
+
+create external table netflixtitles (type string, title string, director string, casts string, country string, date_added string, release_year int, rating string, duration string, listed_in string, description string) row format delimited fields terminated by ",(?=([^\"]*\"[^\"]*\")*[^\"]*$)" location '/user/rs5955/impalaInput/';
+
+create external table netflixtitles (type string, title string, director string, casts string, country string, date_added string, release_year int, rating string, duration string, listed_in string, description string) row format 'org.apache.hadoop.hive.contrib.serde2.RegexSerDe' WITH SERDEPROPERTIES ("input.regex" = ',(?=([^\"]*\"[^\"]*\")*[^\"]*$)') location '/user/rs5955/impalaInput';
+
+CREATE EXTERNAL TABLE (type string, title string, director string, casts string, country string, date_added string, release_year int, rating string, duration string, listed_in string, description string) ROW FORMAT SERDE 'org.apache.hadoop.hive.contrib.serde2.MultiDelimitSerDe' WITH SERDEPROPERTIES ("field.delim"=",(?=([^\"]*\"[^\"]*\")*[^\"]*$)")
