@@ -145,28 +145,16 @@ run the python scripts to clean each dataset and upload the cleaned dataset to H
 
 - clean data.csv
     - run ``python go.py``
-    - ``ls`` 
-    - ``head -3 cleaned_data.csv``
 - clean movie_titles.csv 
     - run ``python go.py``
-    - ``ls`` 
-    - ``head -3 cleaned_movie_titles.csv``
  - clean mubi_lists.csv
     - run ``python go.py``
-    - ``ls`` 
-    - ``head -3 cleaned_mubi_lists_data.csv``
  - clean mubi_movies.csv
     - run ``python go.py``
-    - ``ls`` 
-    - ``head -3 cleaned_mubi_lists_data.csv``
  - clean mubi_ratings.csv
     - run ``python go.py``
-    - ``ls`` 
-    - ``head -3 cleaned_mubi_lists_data.csv``
  - clean netflix_titles.csv
     - run ``python go.py``
-    - ``ls`` 
-    - ``head -3 cleaned_netflix_titles.csv``
 
 OPTION 2 (if option 1 fails):
 
