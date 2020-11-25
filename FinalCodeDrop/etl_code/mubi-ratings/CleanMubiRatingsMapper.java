@@ -27,7 +27,7 @@ public class CleanMubiRatingsMapper extends Mapper<LongWritable, Text, NullWrita
                         //rebuild the string
                         retStr+=tokens[i];
                         if(i<12){
-                            retStr+=",";
+                            retStr+="|";
                         }
                     }
                     context.write(NullWritable.get(),new Text(retStr));

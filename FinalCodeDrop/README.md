@@ -7,7 +7,7 @@
 
 This directory is for data ingestion
 
-- download_data.py (script to download src files)
+- download_data.py (script to download source files)
 - ingestion.sh (script for ingestion data)
 
 

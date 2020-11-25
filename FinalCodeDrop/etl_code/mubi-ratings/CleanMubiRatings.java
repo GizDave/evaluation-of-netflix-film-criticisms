@@ -15,7 +15,7 @@ public class CleanMubiRatings {
         Job job = new Job();
         job.setJarByClass(CleanMubiRatings.class);
         job.setJobName("CleanMubiRatings");
-        job.setNumReduceTasks(1);
+        job.setNumReduceTasks(0);
         FileInputFormat.addInputPath(job, new Path(args[0]));
         FileOutputFormat.setOutputPath(job, new Path(args[1]));
 
