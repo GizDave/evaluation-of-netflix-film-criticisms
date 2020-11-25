@@ -1,8 +1,10 @@
+before running these commands, run the python go.py file to set directories for impala
+
 $ impala-shell
 
-> connect compute-2-1;
+connect compute-2-1;
 
-> use {NETID};
+use {NETID};
 
 //create table (replace rs5955 with your NETID)
 
@@ -16,21 +18,61 @@ describe mubiratings;
 
 select * from mubiratings limit 5;
 
-select average(rating_score) from mubiratings;
+//check average scores per table entry
 
-select count(*) from mubiratings where istrialist=1;
+select avg(rating_score) from mubiratings; //3.857
 
-select count(*) from mubiratings where istrialist=0;
+select count(*) from mubiratings where istrialist=1; //38830
 
-select average(rating_score) from mubiratings where trialist=1;
+select count(*) from mubiratings where istrialist=0; //968857
 
-select average(rating_score) from mubiratings where trialist=0;
+//less trialists than nontrialists
 
-//trialists seem to rate slightly lower
+select avg(rating_score) from mubiratings where trialist=1; //3.819
 
+select avg(rating_score) from mubiratings where trialist=0; //3.859
 
+//trialists seem to rate slightly lower than non-trialists
+
+select count(*) from mubiratings where issubscriber=1; //161672
+
+select count(*) from mubiratings where issubscriber=0; //846025
+
+//more non subscribers than subscribers
+
+select avg(rating_score) from mubiratings where issubscriber=1; //3.86855
+
+select avg(rating_score) from mubiratings where issubscriber=0; //3.85553
+
+//subscribers rate higher than nonsubscribers
+
+select count(*) from mubiratings where iseligibletrial=1; //828051
+
+select count(*) from mubiratings where iseligibletrial=0; //179648
+
+//most users are eligible for trial but arent using them
+
+select avg(rating_score) from mubiratings where iseligibletrial=1; //3.85585
+
+select avg(rating_score) from mubiratings where iseligibletrial=0; //3.86575
+
+//similar to subscribers, users who are not eligible for trials (ie. non subscribers), rate movies higher
+
+select count(*) from mubiratings where haspayment=1; //293754
+
+select count(*) from mubiratings where haspayment=0; //713945
+
+//less customers had paid subscriptions when they rated the movie
+
+select avg(rating_score) from mubiratings where haspayment=1; //3.85004
+
+select avg(rating_score) from mubiratings where haspayment=0; //3.86073
+
+//interestingly, paid subscribers rated lower
 
 ===============================================
+create external table mubiratings (movie_id int, rating_id int, rating_url string, rating_score float, rating_timestamp string, critic string, critic_likes int, critic_comments int, user_id int, isTrialist boolean, isSubscriber boolean, isEligibleTrial boolean, hasPayment boolean) row format delimited fields terminated by '|' location '/user/rs5955/impalaInput/mubi-ratings/';
+
 movieid int
 ratingid int 
 ratingurl string

@@ -208,7 +208,7 @@ $ python go.py mubi cleaned_mubi_ratings_data.csv
 $ python go.py netflix-shows netflix_titles.csv
 $ python go.py netflix-shows cleaned_netflix_titles.csv
 ```
-After profiling is complete, you should see 12 profiled outputs for each dataset in the current directory.
+After profiling is complete, you should see 12 profiled .txt files for each dataset in the current directory.
 
 **4. Data Analytics**
 
