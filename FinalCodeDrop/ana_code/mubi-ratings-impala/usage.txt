@@ -16,6 +16,21 @@ describe mubiratings;
 
 select * from mubiratings limit 5;
 
+select average(rating_score) from mubiratings;
+
+select count(*) from mubiratings where istrialist=1;
+
+select count(*) from mubiratings where istrialist=0;
+
+select average(rating_score) from mubiratings where trialist=1;
+
+select average(rating_score) from mubiratings where trialist=0;
+
+//trialists seem to rate slightly lower
+
+
+
+===============================================
 movieid int
 ratingid int 
 ratingurl string

@@ -215,6 +215,22 @@ After profiling is complete, you should see 12 profiled outputs for each dataset
 //todo
 
 
+mubi_ratings_data.csv analytics with impala:
+- in ana_code/mubi-ratings-impala
+  - run ``python go.py`` to set impala input directory
+  - check if directory is properly set:
+    - ``hdfs dfs -ls impalaInput/mubi-ratings``
+  - check usage.txt for instructions
+
+netflix_titles.csv analytics:
+- in ana_code/netflix-titles-impala
+  - run ``python go.py`` to set impala input directory
+  - check if directory is properly set:
+    - ``hdfs dfs -ls impalaInput/netflix-titles``
+  - check usage.txt for instructions
+  
+
+
 
 
 
