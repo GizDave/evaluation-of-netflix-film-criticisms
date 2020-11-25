@@ -19,14 +19,14 @@ os.system("jar -cvf CleanMubiList.jar *.class")
 #run the program
 os.system('hadoop jar CleanMubiList.jar CleanMubiList /user/"$USER"/dataset/mubi/mubi_lists_data.csv /user/"$USER"/final/mubi/mubi-lists-data/output')
 
-##DUMP (dont dump for large csv files)
-#os.system('hdfs dfs -cat final/netflix-shows/netflix-titles/ /user/"$USER"/final/netflix-shows/netflix-titles/output/part-r-00000')
-
 #GET FILE TO HADOOP SERVER
 os.system('hdfs dfs -get /user/"$USER"/final/mubi/mubi-lists-data/output/part-'+'*'+'-00000'+' cleaned_mubi_lists_data.csv')
 
 ##delete class and jar files as they are not needed anymore
 os.system("rm *.class")
 os.system("rm *.jar")
+
+os.system('hdfs dfs -rm dataset/mubi/cleaned_mubi_lists_data.csv')
+os.system('hdfs dfs -put cleaned_mubi_lists_data.csv dataset/mubi/cleaned_mubi_lists_data.csv')
 
 print('##DONE##')

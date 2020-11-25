@@ -20,7 +20,7 @@ public class CleanData {
         FileOutputFormat.setOutputPath(job, new Path(args[1]));
 
         job.setMapperClass(CleanDataMapper.class);
-        job.setNumReduceTasks(1);
+        job.setNumReduceTasks(0);
 
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(Text.class);

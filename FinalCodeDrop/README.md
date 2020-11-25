@@ -3,6 +3,8 @@
 
 ### Directory Overview:
 
+*the python/shell scripts written for this project are to facilitate the compilation process*
+
 **/data_ingest**:
 
 This directory is for data ingestion
@@ -139,38 +141,32 @@ navigate to the /etl_code directory
 
 OPTION 1:
 
-run the python scripts to clean each dataset
+run the python scripts to clean each dataset and upload the cleaned dataset to HDFS
 
 - clean data.csv
     - run ``python go.py``
     - ``ls`` 
     - ``head -3 cleaned_data.csv``
-    - ``hdfs dfs -put cleaned_data.csv dataset/assignment-matrix/``
 - clean movie_titles.csv 
     - run ``python go.py``
     - ``ls`` 
     - ``head -3 cleaned_movie_titles.csv``
-    - ``hdfs dfs -put cleaned_movie_titles.csv dataset/assignment-matrix/``
  - clean mubi_lists.csv
     - run ``python go.py``
     - ``ls`` 
     - ``head -3 cleaned_mubi_lists_data.csv``
-    - ``hdfs dfs -put cleaned_mubi_lists_data.csv dataset/mubi/``
  - clean mubi_movies.csv
     - run ``python go.py``
     - ``ls`` 
     - ``head -3 cleaned_mubi_lists_data.csv``
-    - ``hdfs dfs -put cleaned_mubi_lists_data.csv dataset/mubi/``
  - clean mubi_ratings.csv
     - run ``python go.py``
     - ``ls`` 
     - ``head -3 cleaned_mubi_lists_data.csv``
-    - ``hdfs dfs -put cleaned_mubi_lists_data.csv dataset/mubi/``
  - clean netflix_titles.csv
     - run ``python go.py``
     - ``ls`` 
     - ``head -3 cleaned_netflix_titles.csv``
-    - ``hdfs dfs -put cleaned_netflix_titles.csv dataset/netflix-shows/``
 
 OPTION 2 (if option 1 fails):
 
@@ -180,7 +176,8 @@ OPTION 2 (if option 1 fails):
     - ``jar -cvf {job-file-name}.jar *.class``
     - ``hadoop jar {job-file-name}.jar {job-file-name} {dataset-path} {output-path}``
     - ``hdfs dfs -get {output-file} cleaned_{dataset-name}.csv``
-
+	- ``hdfs dfs -put {output-file} {hdfs-directory-path}``
+	
 Once done, the hdfs dataset directory should follow this structure: 
 
 > $ hdfs dfs -ls dataset/
@@ -228,7 +225,6 @@ After profiling is complete, you should see 12 profiled outputs for each dataset
 **4. Data Analytics**
 
 //todo
-
 
 
 

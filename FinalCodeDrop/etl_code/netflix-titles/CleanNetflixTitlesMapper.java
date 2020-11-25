@@ -19,7 +19,7 @@ public class CleanNetflixTitlesMapper extends Mapper<LongWritable, Text, NullWri
                 for(int i=1;i<12;i++){
                     retStr+=tokens[i];
                     if(i<11){
-                        retStr+=",";
+                        retStr+="|";
                     }
                 }
                 context.write(NullWritable.get(),new Text(retStr));
