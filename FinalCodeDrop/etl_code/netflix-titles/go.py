@@ -27,6 +27,6 @@ os.system("rm *.class")
 os.system("rm *.jar")
 
 os.system('hdfs dfs -rm dataset/netflix-shows/cleaned_netflix_titles.csv')
-os.system('hdfs dfs -put cleaned_netflix_titles.csv dataset/mubi/cleaned_netflix_titles.csv')
+os.system('hdfs dfs -put cleaned_netflix_titles.csv dataset/netflix-shows/cleaned_netflix_titles.csv')
 
 print('##DONE##')
