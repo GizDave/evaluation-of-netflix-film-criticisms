@@ -3,21 +3,17 @@
 
 ### Directory Overview:
 
-**data ingestion**:
+**/data_ingest**:
 
-This directory is for putting source files into HDFS
-
-/data_ingest
+This directory is for data ingestion
 
 - download_data.py (script to download src files)
 - ingestion.sh (script for ingestion data)
 
 
-**ETL/cleaning code**:
+**/etl_code**:
 
-This directory is for cleaning the datasets
-
-/etl_code
+This directory is for ETL/cleaning code
 
 - /data
   - CleanData.java
@@ -56,11 +52,9 @@ This directory is for cleaning the datasets
   - go.py
   - README.md
 
-**profiling code**: 
+**/profiling_code**: 
 
-This directory is 1for counting the number of rows in the datasets
-
-/profiling_code
+This directory is for profiling code
 
 - CountRecs.java
 - CountRecsMapper.java
@@ -68,17 +62,13 @@ This directory is 1for counting the number of rows in the datasets
 - go.py
 - README.md
 
-**analytic code**:
+**/ana_code**:
 
-This directory is for analyzing the datasets
+This directory is for analytic code
 
-/ana_code
+**/screenshots**: 
 
-**screenshots**: 
-
-This directory is for any relevant screenshots for ingestion, cleaning, profiling, and analyzing
-
-/screenshots
+This directory is for any relevant screenshots for the analytics
 
 - data
 - movie-titles
@@ -87,22 +77,113 @@ This directory is for any relevant screenshots for ingestion, cleaning, profilin
 - mubi-ratings
 - netflix-titles
 
-**test code**: 
+**/test_code**: 
 
-This directory contains iscellaneous code
+This directory contains miscellaneous code
 
-/test_code
+***
+## INSTRUCTIONS
 
-**How to build code**:
+The three sources of data we use for this project are found here:
 
-follow the instructions below
+1. https://www.kaggle.com/shivamb/netflix-shows
+2. https://www.kaggle.com/bharath150/assignment-netflix
+3. https://www.kaggle.com/clementmsika/mubi-sqlite-database-for-movie-lovers
 
-**How to run code**:
+**1. Data Ingestion:**
 
-**Where to find input data used:**
+OPTION 1:
 
-Once data ingestion and data cleaning is complete, and all the cleaned files are put into HDFS as well, the HDFS home directory should contain the following directory structure: 
+in /data_digest, run: ``$ sh ingestion.sh``
 
+OPTION 2 (if option 1 fails):
+1. Download the files directly from the links above
+2. Transfer files to dumbo server (scp/ftp) (eg. scp ./yourfilename yourNetID@dumbo.es.its.nyu.edu:/home/yourNetID)
+3. Create directories in HDFS ``./dataset`` with the following commands: 
+    ```
+    $ hdfs dfs -mkdir ./dataset
+    $ hdfs dfs -mkdir ./dataset/netflix-shows
+    $ hdfs dfs -mkdir ./dataset/assignment-matrix
+    $ hdfs dfs -mkdir ./dataset/mubi
+    ```
+4. Put the datasets into their respective directories
+    ```
+    $ hdfs dfs -put netflix_titles.csv dataset/netflix-shows/
+    $ hdfs dfs -put movie_titles.csv dataset/assignment-matrix/
+    $ hdfs dfs -put data.csv dataset/assignment-matrix/
+    $ hdfs dfs -put mubi_lists_data.csv dataset/mubi/
+    $ hdfs dfs -put mubi_movie_data.csv dataset/mubi/
+    $ hdfs dfs -put mubi_ratings_data.csv dataset/mubi/
+    ```
+After the files are put into HDSF, the directory should follow this structure:
+
+> $ hdfs dfs -ls dataset/
+
+```
+.
+└── dataset/
+    ├── assignment-matrix/
+    │   ├── data.csv
+    │   ├── movie_titles.csv
+    ├── mubi/
+    │   ├── mubi_lists_data.csv
+    │   ├── mubi_movie_data.csv
+    │   └── mubi_ratings_data.csv
+    └── netflix-shows/ 
+        └── netflix_titles.csv
+
+```
+**2. Data Cleaning**
+
+navigate to the /etl_code directory
+
+OPTION 1:
+
+run the python scripts to clean each dataset
+
+- clean data.csv
+    - run ``python go.py``
+    - ``ls`` 
+    - ``head -3 cleaned_data.csv``
+    - ``hdfs dfs -put cleaned_data.csv dataset/assignment-matrix/``
+- clean movie_titles.csv 
+    - run ``python go.py``
+    - ``ls`` 
+    - ``head -3 cleaned_movie_titles.csv``
+    - ``hdfs dfs -put cleaned_movie_titles.csv dataset/assignment-matrix/``
+ - clean mubi_lists.csv
+    - run ``python go.py``
+    - ``ls`` 
+    - ``head -3 cleaned_mubi_lists_data.csv``
+    - ``hdfs dfs -put cleaned_mubi_lists_data.csv dataset/mubi/``
+ - clean mubi_movies.csv
+    - run ``python go.py``
+    - ``ls`` 
+    - ``head -3 cleaned_mubi_lists_data.csv``
+    - ``hdfs dfs -put cleaned_mubi_lists_data.csv dataset/mubi/``
+ - clean mubi_ratings.csv
+    - run ``python go.py``
+    - ``ls`` 
+    - ``head -3 cleaned_mubi_lists_data.csv``
+    - ``hdfs dfs -put cleaned_mubi_lists_data.csv dataset/mubi/``
+ - clean netflix_titles.csv
+    - run ``python go.py``
+    - ``ls`` 
+    - ``head -3 cleaned_netflix_titles.csv``
+    - ``hdfs dfs -put cleaned_netflix_titles.csv dataset/netflix-shows/``
+
+OPTION 2 (if option 1 fails):
+
+- for each dataset:
+    - ``javac -classpath `yarn classpath` -d . {mapper-file-name}.java``
+    - ``javac -classpath `yarn classpath`:. -d . {job-file-name}.java``
+    - ``jar -cvf {job-file-name}.jar *.class``
+    - ``hadoop jar {job-file-name}.jar {job-file-name} {dataset-path} {output-path}``
+    - ``hdfs dfs -get {output-file} cleaned_{dataset-name}.csv``
+
+Once done, the hdfs dataset directory should follow this structure: 
+
+> $ hdfs dfs -ls dataset/
 ```
 .
 └── dataset/
@@ -123,54 +204,41 @@ Once data ingestion and data cleaning is complete, and all the cleaned files are
         └── cleaned_netflix_titles.csv
 
 ```
+**3. Data Profiling**
 
-**Where to find results of run**:
+navigate to the /profiling_code directory
 
-**INSTRUCTIONS**
-The three sources of data we use for this project are found here:
-
-1. https://www.kaggle.com/shivamb/netflix-shows
-2. https://www.kaggle.com/bharath150/assignment-netflix
-3. https://www.kaggle.com/clementmsika/mubi-sqlite-database-for-movie-lovers
-
-**1. Data Ingestion:**
-
-OPTION 1:
-- download the files into a local directory: /dataset
-- in /data_digest, run:
-  > $ sh ingestion.sh
-
-OPTION 2 (if option 1 fails):
-1. Download the files directly from the links above
-2. Transfer files to dumbo server (scp/ftp) (eg. scp ./yourfilename yourNetID@dumbo.es.its.nyu.edu:/home/yourNetID)
-3. Create directories in HDFS ``./dataset`` with the following commands: 
-  a. $ hdfs dfs -mkdir ./dataset
-  b. $ hdfs dfs -mkdir ./dataset/netflix-shows
-  c. $ hdfs dfs -mkdir ./dataset/assignment-matrix
-  d. $ hdfs dfs -mkdir ./dataset/mubi
-4. Put the datasets into their respective directories
-  a. $ hdfs dfs -put netflix_titles.csv dataset/netflix-shows/
-  b. $ hdfs dfs -put movie_titles.csv dataset/assignment-matrix/
-  c. $ hdfs dfs -put data.csv dataset/assignment-matrix/
-  d. $ hdfs dfs -put mubi_lists_data.csv dataset/mubi/
-  e. $ hdfs dfs -put mubi_movie_data.csv dataset/mubi/
-  f. $ hdfs dfs -put mubi_ratings_data.csv dataset/mubi/
-
-After the files are put into HDSF, the directory should follow this structure:
-
-> $ hdfs dfs -ls dataset/
-
+for each dataset, run ``python go.py <directory-name> <csv-file-name>``
 ```
-.
-└── dataset/
-    ├── assignment-matrix/
-    │   ├── data.csv
-    │   ├── movie_titles.csv
-    ├── mubi/
-    │   ├── mubi_lists_data.csv
-    │   ├── mubi_movie_data.csv
-    │   └── mubi_ratings_data.csv
-    └── netflix-shows/ 
-        └── netflix_titles.csv
-
+$ python go.py assignment-matrix data.csv
+$ python go.py assignment-matrix cleaned_data.csv
+$ python go.py assignment-matrix movie_titles.csv
+$ python go.py assignment-matrix cleaned_movie_titles.csv
+$ python go.py mubi mubi_lists_data.csv
+$ python go.py mubi cleaned_mubi_lists_data.csv
+$ python go.py mubi mubi_movie_data.csv
+$ python go.py mubi cleaned_mubi_movie_data.csv
+$ python go.py mubi mubi_ratings_data.csv
+$ python go.py mubi cleaned_mubi_ratings_data.csv
+$ python go.py netflix-shows netflix_titles.csv
+$ python go.py netflix-shows cleaned_netflix_titles.csv
 ```
+After profiling is complete, you should see 12 profiled outputs for each dataset in the current directory.
+
+**4. Data Analytics**
+
+//todo
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,8 +1,7 @@
 # CLEANING
 
-the directories contains a mapreduce program for either cleaning or profiling the dataset
+the directories contains a mapreduce program for cleaning the respective dataset
 
-total: 7 mapreduce programs (6 cleaning, 1 profiling)
 
 ## netflix-titles
 
