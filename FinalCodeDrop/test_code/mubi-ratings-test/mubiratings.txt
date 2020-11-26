@@ -1,0 +1,15 @@
+create external table mubiratings (movie_id int, rating_id int, rating_url string, rating_score float, rating_timestamp string, critic string, critic_likes int, critic_comments int, user_id int, isTrialist boolean, isSubscriber boolean, isEligibleTrial boolean, hasPayment boolean) row format delimited fields terminated by '|' location '/user/rs5955/impalaInput/mubi-ratings/';
+
+movieid int
+ratingid int 
+ratingurl string
+ratingscore float
+ratingtimestamp timestamp
+critic string
+criticlikes int
+criticcomments int 
+userid int
+usertrialist bool
+usersub bool
+usereligiblefortrial bool
+userhaspayment bool

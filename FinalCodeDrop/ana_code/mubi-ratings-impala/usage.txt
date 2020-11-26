@@ -70,19 +70,23 @@ select avg(rating_score) from mubiratings where haspayment=0; //3.86073
 
 //interestingly, paid subscribers rated lower
 
-===============================================
-create external table mubiratings (movie_id int, rating_id int, rating_url string, rating_score float, rating_timestamp string, critic string, critic_likes int, critic_comments int, user_id int, isTrialist boolean, isSubscriber boolean, isEligibleTrial boolean, hasPayment boolean) row format delimited fields terminated by '|' location '/user/rs5955/impalaInput/mubi-ratings/';
+select avg(rating_score),critic_comments from mubiratings group by critic_comments order by avg(rating_score) desc;
 
-movieid int
-ratingid int 
-ratingurl string
-ratingscore float
-ratingtimestamp timestamp
-critic string
-criticlikes int
-criticcomments int 
-userid int
-usertrialist bool
-usersub bool
-usereligiblefortrial bool
-userhaspayment bool
+//critics who comment often tend to rate 5s or 2s
+
+select avg(critic_likes), issubscriber from mubiratings where issubscriber is not null group by issubscriber;
+
+//subscribers tend to have more critic likes than non subscribers
+
+select avg(critic_likes), istrialist from mubiratings where istrialist is not null group by istrialist;
+
+//trialists also tend to have more critic likes than non trialists
+
+select avg(critic_likes), iseligibletrial from mubiratings where iseligibletrial is not null group by iseligibletrial;
+
+//eligible trialists have less critic likes
+
+select avg(critic_likes), haspayment from mubiratings where haspayment is not null group by haspayment;
+
+//paid subscribers tend to have more likes
+
