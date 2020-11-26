@@ -222,7 +222,7 @@ mubi_ratings_data.csv analytics with impala:
     - ``hdfs dfs -ls impalaInput/mubi-ratings``
   - check usage.txt for instructions
 
-netflix_titles.csv analytics:
+netflix_titles.csv analytics with impala:
 - in ana_code/netflix-titles-impala
   - run ``python go.py`` to set impala input directory
   - check if directory is properly set:

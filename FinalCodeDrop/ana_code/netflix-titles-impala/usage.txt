@@ -1,0 +1,40 @@
+before running these commands, run the python go.py file to set directories for impala
+
+$ impala-shell
+
+connect compute-2-1;
+
+invalidate metadata;
+
+use {NETID};
+
+//create table (replace rs5955 with your NETID)
+
+create external table netflixtitles (type string, title string, director string, casts string, country string, date_added string, release_year int, rating string, duration string, listed_in string, description string) row format delimited fields terminated by '|' location '/user/rs5955/impalaInput/netflix-shows/';
+
+//check table
+
+show tables;
+
+describe netflixtitles;
+
+select * from netflixtitles limit 5;
+
+select count(*) from netflixtitles;
+
+//check range of years
+select type, title, director, country, date_added, release_year, rating, duration, listed_in from netflixtitles where release_year is not null order by release_year asc limit 5;
+select type, title, director, country, date_added, release_year, rating, duration, listed_in from netflixtitles where release_year is not null order by release_year desc limit 5;
+
+//select avg(release_year), type, title, director, country, date_added, release_year, rating, duration, listed_in from netflixtitles group by type;
+
+select count(*) from netflixtitles where type like '%Movie%'; //4263
+
+select count(*) from netflixtitles where not type like '%Movie%'; //1970
+
+select avg(release_year), type from netflixtitles where release_year is not null group by type;
+
+//more tv shows in recent years than movies
+
+select release_year,listed_in group by listed_in;
+

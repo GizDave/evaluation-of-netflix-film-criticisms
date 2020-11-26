@@ -107,4 +107,4 @@ select avg(critic_comments), iseligibletrial from mubiratings where iseligibletr
 
 select avg(critic_comments), haspayment from mubiratings where haspayment is not null group by haspayment;
 
-//
+//paid subscribers commented more
