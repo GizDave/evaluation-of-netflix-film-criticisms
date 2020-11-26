@@ -4,6 +4,8 @@ $ impala-shell
 
 connect compute-2-1;
 
+invalidate metadata;
+
 use {NETID};
 
 //create table (replace rs5955 with your NETID)
@@ -89,4 +91,20 @@ select avg(critic_likes), iseligibletrial from mubiratings where iseligibletrial
 select avg(critic_likes), haspayment from mubiratings where haspayment is not null group by haspayment;
 
 //paid subscribers tend to have more likes
+//general 3:1 ratio for paid users vs free users
 
+select avg(critic_comments), issubscriber from mubiratings where issubscriber is not null group by issubscriber;
+
+//subscribers tend to comment more
+
+select avg(critic_comments), istrialist from mubiratings where istrialist is not null group by istrialist;
+
+//trialists tend to comment more
+
+select avg(critic_comments), iseligibletrial from mubiratings where iseligibletrial is not null group by iseligibletrial;
+
+//eligible trialists commented less
+
+select avg(critic_comments), haspayment from mubiratings where haspayment is not null group by haspayment;
+
+//
