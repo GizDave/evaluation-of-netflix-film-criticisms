@@ -24,9 +24,8 @@ select count(*) from netflixtitles;
 
 //check range of years
 select type, title, director, country, date_added, release_year, rating, duration, listed_in from netflixtitles where release_year is not null order by release_year asc limit 5;
-select type, title, director, country, date_added, release_year, rating, duration, listed_in from netflixtitles where release_year is not null order by release_year desc limit 5;
 
-//select avg(release_year), type, title, director, country, date_added, release_year, rating, duration, listed_in from netflixtitles group by type;
+select type, title, director, country, date_added, release_year, rating, duration, listed_in from netflixtitles where release_year is not null order by release_year desc limit 5;
 
 select count(*) from netflixtitles where type like '%Movie%'; //4263
 
@@ -36,5 +35,10 @@ select avg(release_year), type from netflixtitles where release_year is not null
 
 //more tv shows in recent years than movies
 
-select release_year,listed_in group by listed_in;
+select count(type), rating from netflixtitles group by rating;
 
+//primarily tv-14 and tv-ma
+
+select count(type) from netflixtitles where country like '%United States%'; 
+
+select release_year, count(rating) from netflixtitles where release_year is not null group by release_year order by release_year desc limit 10;

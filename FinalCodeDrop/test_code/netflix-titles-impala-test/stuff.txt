@@ -1,0 +1,5 @@
+select type, title, director, country, date_added, release_year, rating, duration, listed_in from netflixtitles 
+
+select release_year,listed_in group by listed_in;
+
+select avg(release_year), type, title, director, country, date_added, release_year, rating, duration, listed_in from netflixtitles group by type;
