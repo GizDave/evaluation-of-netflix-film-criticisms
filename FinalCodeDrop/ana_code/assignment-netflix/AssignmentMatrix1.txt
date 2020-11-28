@@ -1,0 +1,43 @@
+import org.apache.spark.SparkContext
+import org.apache.spark.SparkContext._
+import org.apache.spark.SparkConf
+import org.apache.spark.sql.SQLContext
+
+// read in data sources as datasets
+val user_data = spark.read.format("org.apache.spark.csv").option("header", false).option("inferSchema", true).csv("dataset/assignment_matrix/data.csv")
+val movies = spark.read.format("org.apache.spark.csv").option("header", false).option("inferSchema", true).csv("dataset/assignment_matrix/movie_titles.csv")
+
+// create temporary tables from the datasets
+user_data.registerTempTable("data")
+movies.registerTempTable("movies")
+
+// combine the datasets
+val agg = spark.sql("SELECT data._c0 as movieID, data._c1 as userID, data._c2 as userRating, data._c3 as ratingDate, movies._c1 as movieReleaseYear, movies._c2 as movieTitle FROM data LEFT JOIN movies ON data._c0 = movies._c0")
+agg.registerTempTable("agg")
+agg.persist()
+
+// count number of ratings per movie
+val num_rate_per_movie = spark.sql("SELECT movieID, COUNT(DISTINCT userID) as num_rating FROM agg GROUP BY movieID")
+num_rate_per_movie.show
+num_rate_per_movie.registerTempTable("numMovieRating")
+
+// find max and min numbers of ratings
+spark.sql("SELECT MIN(num_rating), MAX(num_rating) FROM numMovieRating").show
+
+// show movies by descending order of num_rating
+num_rate_per_movie.sort($"num_rating".desc).show
+
+// show movies by ascending order of num_rating
+num_rate_per_movie.sort($"num_rating".asc).show
+
+// 975
+spark.sql("SELECT COUNT(num_rating) FROM numMovieRating WHERE num_rating < 100").show
+
+// 17770
+spark.sql("SELECT COUNT(num_rating) FROM numMovieRating").show
+
+// ~5.5% of the movies have fewer than 100 ratings.
+// drop these movies and save the filtered agg
+val agg_filtered = spark.sql("SELECT userID, userRating, ratingDate, movieReleaseYear, movieTitle FROM agg INNER JOIN (SELECT movieID FROM numMovieRating WHERE num_rating > 100) as movieID ON agg.movieID = movieID.movieID")
+agg_filtered.show
+agg_filtered.write.option("header", "true").csv("aggregatedMovieData_fitlered.csv")
