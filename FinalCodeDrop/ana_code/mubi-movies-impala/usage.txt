@@ -1,0 +1,42 @@
+// set up directory
+
+$ hdfs dfs -mkdir impalaInput
+
+$ hdfs dfs -rm -r -f impalaInput/mubi-movies
+
+$ hdfs dfs -mkdir impalaInput/mubi-movies
+
+$ hdfs dfs -cp dataset/mubi/cleaned_mubi_movie_data.csv impalaInput/cleaned_mubi_movie_data.csv
+
+// connect to impala
+
+$ impala-shell
+
+connect compute-2-1;
+
+invalidate metadata;
+
+// replace NETID with your net id
+use {NETID};
+
+create external table mubimovies (movie_id int, movie_title string, movie_release_year int, movie_title_language string, movie_popularity int, director_name string) row format delimited fields terminated by ',' location '/user/NETID/impalaInput/cleaned_mubi_movie_data.csv';
+
+// check table
+describe mubimovies;
+
+select * from mubimovies where movie_release_year is not null and movie_popularity is not null;
+
+// most popular director by support across all their films
+select director_name, sum(movie_popularity) from mubimovies where movie_popularity is not null group by director_name order by sum(movie_popularity) asc; 
+// stanley kubrick 67731
+
+// most popular director by mean
+select director_name, avg(movie_popularity) from mubimovies where movie_popularity is not null group by director_name order by avg(movie_popularity) asc; 
+// stanley kubrick (again), 4233.1875
+
+select movie_release_year, sum(movie_popularity) from mubimovies where movie_popularity is not null group by movie_release_year  order by sum(movie_popularity) asc; // 2009, 78396
+// the 18 most popular years are all between 1994 and 2012, indicating that mubi users mostly like recent films despite the most popular directors being either dead or mostly active before 1994 (kubrick, hitchcock, coppola, etc.)
+
+// most popular film overall
+select movie_title, movie_popularity from mubimovies where movie_popularity is not null order by movie_popularity asc;
+// pulp fiction, 13989
