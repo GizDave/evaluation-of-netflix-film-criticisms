@@ -19,7 +19,7 @@ invalidate metadata;
 // replace NETID with your net id
 use {NETID};
 
-create external table mubilists (user_id int, list_title string, list_movie_number int, list_followers int, list_url string, list_comments int) row format delimited fields terminated by ',' location '/user/NETID/impalaInput/cleaned_mubi_lists_data.csv';
+create external table mubilists (user_id int, list_title string, list_movie_number int, list_followers int, list_url string, list_comments int) row format delimited fields terminated by ',' location '/user/NETID/impalaInput/mubi-lists';
 
 // check table
 describe mubilists;
