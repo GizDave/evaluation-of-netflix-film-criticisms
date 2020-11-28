@@ -1,0 +1,32 @@
+// import the necessay modules
+import org.apache.spark.SparkContext
+import org.apache.spark.SparkContext._
+import org.apache.spark.SparkConf
+import org.apache.spark.sql.SQLContext
+
+// read in data source as dataset
+val agg = spark.read.format("org.apache.spark.csv").option("header", true).option("inferSchema", true).csv("aggregatedMovieData_fitlered.csv")
+agg.registerTempTable("agg")
+
+// calculate average annual rating for each movie
+val annualMovieAVG = spark.sql("SELECT Year(ratingDate) AS year, movieTitle, COUNT(userRating) AS count, AVG(userRating) AS annualRating FROM agg GROUP BY year, movieTitle")
+annualMovieAVG.registerTempTable("annualMovieAVG")
+annualMovieAVG.show
+
+// calculate unweighted average annual rating
+val unweightedAVG = spark.sql("SELECT Year(ratingDate) AS year, COUNT(DISTINCT movieTitle) AS movieCount, AVG(userRating) as unweightedAVG FROM agg GROUP BY year ORDER BY year")
+unweightedAVG.registerTempTable("unweightedAVG")
+unweightedAVG.show
+
+// calculate weighted average annual rating
+val weightedAVG = spark.sql("SELECT year, AVG(annualRating) AS weightedAVG FROM annualMovieAVG GROUP By year ORDER BY year")
+weightedAVG.registerTempTable("weightedAVG")
+weightedAVG.show
+
+// combine the dataframes for weighted and unweighted avg
+val combinedAVG = spark.sql("SELECT year, movieCount, unweightedAVG, weightedAVG FROM unweightedAVG INNER JOIN weightedAVG using(year) ORDER BY year")
+combinedAVG.show
+
+// save results
+annualMovieAVG.write.option("header", "true").csv("annualMovieAVG.csv")
+combinedAVG.write.option("header", "true").csv("MA.csv")
