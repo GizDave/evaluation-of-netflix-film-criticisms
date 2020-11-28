@@ -6,7 +6,7 @@ $ hdfs dfs -rm -r -f impalaInput/mubi-movies
 
 $ hdfs dfs -mkdir impalaInput/mubi-movies
 
-$ hdfs dfs -cp dataset/mubi/cleaned_mubi_movie_data.csv impalaInput/cleaned_mubi_movie_data.csv
+$ hdfs dfs -cp dataset/mubi/cleaned_mubi_movie_data.csv impalaInput/mubi-movies
 
 // connect to impala
 
@@ -19,7 +19,7 @@ invalidate metadata;
 // replace NETID with your net id
 use {NETID};
 
-create external table mubimovies (movie_id int, movie_title string, movie_release_year int, movie_title_language string, movie_popularity int, director_name string) row format delimited fields terminated by ',' location '/user/NETID/impalaInput/cleaned_mubi_movie_data.csv';
+create external table mubimovies (movie_id int, movie_title string, movie_release_year int, movie_title_language string, movie_popularity int, director_name string) row format delimited fields terminated by ',' location '/user/NETID/impalaInput/mubi-movies';
 
 // check table
 describe mubimovies;
