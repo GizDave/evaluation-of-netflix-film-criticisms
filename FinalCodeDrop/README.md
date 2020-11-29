@@ -212,8 +212,19 @@ After profiling is complete, you should see 12 profiled .txt files for each data
 
 **4. Data Analytics**
 
-//todo
+assignment matrix:
+- in ana_code/assignment-netflix:
+  - start spark2 shell: ``spark2-shell -- packages com.databricks:spark-csv_2.10:1.5.0``
+  - check AssignmentMatrix1.txt
+  - check AssignmentMatrix2.txt
 
+mubi_movies_data.csv analytics with impala:
+- in ana_code/mubi-movies-impala
+  - check usage.txt for instructions
+
+mubi_movies_data.csv analytics with impala:
+- in ana_code/mubi-movies-impala
+  - check usage.txt for instructions
 
 mubi_ratings_data.csv analytics with impala:
 - in ana_code/mubi-ratings-impala
@@ -228,17 +239,3 @@ netflix_titles.csv analytics with impala:
   - check if directory is properly set:
     - ``hdfs dfs -ls impalaInput/netflix-titles``
   - check usage.txt for instructions
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
