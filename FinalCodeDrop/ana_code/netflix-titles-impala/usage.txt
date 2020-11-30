@@ -41,4 +41,8 @@ select count(type), rating from netflixtitles group by rating;
 
 select count(type) from netflixtitles where country like '%United States%'; 
 
+//2608 listings from the US
+
 select release_year, count(rating) from netflixtitles where release_year is not null group by release_year order by release_year desc limit 10;
+
+//number of listings increased as years increased 
