@@ -31,7 +31,7 @@ select avg(list_movie_number) from mubilists where list_movie_number is not null
 // 37.785
 
 // most followed list
-select list_title, list_followers from mubilists where list_followers is not null order by list_followers asc;
+select list_title, list_followers from mubilists where list_followers is not null order by list_followers desc limit 20;
 // the top two most-followed lists are ‘100 DIRECTORS' ESSENTIAL FILMS’ and ‘The Best Films of EVERY Year’, so director and release year are important factors when choosing movies
 
 // most commented-on list

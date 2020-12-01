@@ -4,8 +4,8 @@ import org.apache.spark.SparkConf
 import org.apache.spark.sql.SQLContext
 
 // read in data sources as datasets
-val user_data = spark.read.format("org.apache.spark.csv").option("header", false).option("inferSchema", true).csv("dataset/assignment_matrix/data.csv")
-val movies = spark.read.format("org.apache.spark.csv").option("header", false).option("inferSchema", true).csv("dataset/assignment_matrix/movie_titles.csv")
+val user_data = spark.read.format("org.apache.spark.csv").option("header", false).option("inferSchema", true).csv("dataset/assignment-matrix/data.csv")
+val movies = spark.read.format("org.apache.spark.csv").option("header", false).option("inferSchema", true).csv("dataset/assignment-matrix/movie_titles.csv")
 
 // create temporary tables from the datasets
 user_data.registerTempTable("data")
