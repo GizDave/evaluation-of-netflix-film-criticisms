@@ -1,4 +1,4 @@
-# Evaluation of Netflix Film Criticisms (FALL 2020)
+# Evaluation of Netflix Film Criticisms (Fall 2020)
 ## Jolyne McHaffey, David Shaw, Raymond Shi
 
 ### Directory Overview:
