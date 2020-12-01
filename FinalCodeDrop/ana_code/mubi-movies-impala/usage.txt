@@ -19,7 +19,7 @@ invalidate metadata;
 // replace NETID with your net id
 use {NETID};
 
-create external table mubimovies (movie_id int, movie_title string, movie_release_year int, movie_title_language string, movie_popularity int, director_name string) row format delimited fields terminated by ',' location '/user/NETID/impalaInput/mubi-movies';
+create external table mubimovies (movie_id int, movie_title string, movie_release_year double, movie_title_language string, movie_popularity int, director_name string) row format delimited fields terminated by ',' location '/user/NETID/impalaInput/mubi-movies';
 
 // check table
 describe mubimovies;
